@@ -1,6 +1,6 @@
 import { app, BrowserWindow } from 'electron';
 import { main } from './main.js';
-
+import { log } from './logger.js';
 
 let mainWindow;
 
@@ -29,6 +29,7 @@ function createWindow() {
 
 // Call the main function from main.js to start the Express server and other initializations
 app.on('ready', () => {
+    log('App starting...');
     main().then(() => {
         createWindow();
     });

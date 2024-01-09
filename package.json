@@ -2,7 +2,7 @@
   "name": "lighthouse-script",
   "version": "1.0.0",
   "description": "",
-  "main": "lighthouse-script.js",
+  "main": "electron.js",
   "type": "module",
   "scripts": {
     "start": "electron electron.js"
@@ -19,6 +19,7 @@
     "open": "^9.1.0"
   },
   "devDependencies": {
-    "electron": "^28.1.2"
+    "electron": "^28.1.2",
+    "electron-packager": "^17.1.2"
   }
 }
