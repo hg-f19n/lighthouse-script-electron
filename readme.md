@@ -45,6 +45,20 @@ This is a Lighthouse script that automates performance tests for multiple webpag
 
 - Delete Previous Results To delete all previous results and start with a clean slate, run: `npm run cleanRun.js`
 
+## Electron App (work in progress)
+
+To package the app use the command:
+
+```bash
+npm npm run package-mac
+```
+
+The package will be saved in /release-builds/lighthouse-script-darwin-x64 folder
+
+### Issues
+
+- path issues
+
 ## Contributing
 
 If you have any suggestions or improvements, feel free to create a fork and submit a pull request on the GitHub repository.

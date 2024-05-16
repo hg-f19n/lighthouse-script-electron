@@ -15,13 +15,15 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const userHome = app.getPath('home');
 
+const appDir = path.join(userHome, 'Lighthouse');
+
 //const inputFile = 'urls.txt';
 const inputFile = path.join(__dirname, 'urls.txt');
 console.log(inputFile);
 //const logDir = 'logs';
-const logDir = path.join(userHome, 'YourAppName', 'app-1.log');
+const logDir = path.join(appDir, 'logs');
 //const resultsDir = 'results';
-const resultsDir = path.join(userHome, 'results');
+const resultsDir = path.join(appDir, 'results');
 
 /*const getLighthouseVersion = async () => {
   const lighthousePkg = await import('lighthouse/package.json', { assert: { type: 'json' } });
