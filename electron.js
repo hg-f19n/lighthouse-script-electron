@@ -1,34 +1,8 @@
-import { app, BrowserWindow, dialog } from 'electron';
-import path from 'path';
-import { main, startServer } from './main.js';
+import { app, BrowserWindow } from 'electron';
+import { main } from './main.js';
 import { log } from './logger.js';
-import { setBaseDirectory, loadConfig, getBaseDirectory } from './config.js'; // Import the shared config module
 
 let mainWindow;
-
-async function promptForDirectory() {
-    const result = await dialog.showOpenDialog({
-        properties: ['openDirectory']
-    });
-    if (result.canceled || result.filePaths.length === 0) {
-        throw new Error('No directory selected');
-    }
-    return result.filePaths[0];
-}
-
-async function initializeApp() {
-    loadConfig(); // Load configuration if it exists
-    let baseDirectory = getBaseDirectory();
-
-    if (!baseDirectory) {
-        baseDirectory = await promptForDirectory();
-        setBaseDirectory(baseDirectory);
-    }
-
-    await main();
-    await startServer(); // Ensure the server starts before creating the window
-    createWindow();
-}
 
 function createWindow() {
     // Create the browser window.
@@ -54,14 +28,11 @@ function createWindow() {
 }
 
 // Call the main function from main.js to start the Express server and other initializations
-app.on('ready', async () => {
-    try {
-        log('App starting...');
-        await initializeApp();
-    } catch (error) {
-        console.error('Error during startup:', error);
-        app.quit();
-    }
+app.on('ready', () => {
+    log('App starting...');
+    main().then(() => {
+        createWindow();
+    });
 });
 
 // Quit when all windows are closed, except on macOS.
