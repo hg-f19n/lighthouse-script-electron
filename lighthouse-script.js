@@ -7,21 +7,16 @@ import { formatAsCSV, formatAsHTML } from './format-utils.mjs';
 import { readPastRunsFile, writePastRunsFile, generateIndexHTML } from './index-utils.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { app } from 'electron';
 
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 
-const userHome = app.getPath('home');
-
 //const inputFile = 'urls.txt';
 const inputFile = path.join(__dirname, 'urls.txt');
 console.log(inputFile);
-//const logDir = 'logs';
-const logDir = path.join(userHome, 'YourAppName', 'app-1.log');
-//const resultsDir = 'results';
-const resultsDir = path.join(userHome, 'results');
+const logDir = 'logs';
+const resultsDir = 'results';
 
 /*const getLighthouseVersion = async () => {
   const lighthousePkg = await import('lighthouse/package.json', { assert: { type: 'json' } });
