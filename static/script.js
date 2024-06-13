@@ -24,9 +24,7 @@ function updateConsole(message, isBold = false) {
 
 socket.onmessage = (event) => {
   console.log('A message was received from the server');
-  
   const data = JSON.parse(event.data);
-  console.log(data);
   const { type, message } = data;
 
   updateConsole(message);
@@ -82,30 +80,16 @@ document.getElementById('edit-urls').addEventListener('click', () => {
 
 document.getElementById('rerun-tests').addEventListener('click', async () => {
   console.log('The rerun-tests button was clicked');
-
-  try {
-    const response = await fetch('/rerun-tests', { method: 'POST' });
-
-    if (response.ok) {
-      console.log('The request to rerun the tests was successful');
-      document.getElementById('rerun-tests').disabled = true;
-      socket.send('startTests');
-    } else {
-      console.error('The request to rerun the tests failed. Status:', response.status, 'Status Text:', response.statusText);
-      alert('Error rerunning tests: ' + response.statusText);
-    }
-  } catch (error) {
-    console.error('Error occurred during fetch to /rerun-tests:');
-    console.error('Error message:', error.message);
-    console.error('Error name:', error.name);
-    if (error.response) {
-      console.error('Error response status:', error.response.status);
-      console.error('Error response status text:', error.response.statusText);
-    }
-    alert('An error occurred while trying to rerun tests');
+  const response = await fetch('/rerun-tests', { method: 'POST' });
+  if (response.ok) {
+    console.log('The request to rerun the tests was successful');
+    document.getElementById('rerun-tests').disabled = true;
+    socket.send('startTests');
+  } else {
+    console.log('The request to rerun the tests failed');
+    alert('Error rerunning tests');
   }
 });
-
 
 document.getElementById('reload-page').addEventListener('click', () => {
   location.reload();
