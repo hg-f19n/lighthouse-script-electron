@@ -50,7 +50,7 @@ This is a Lighthouse script that automates performance tests for multiple webpag
 To package the app use the command:
 
 ```bash
-npm run package-mac
+npm npm run package-mac
 ```
 
 The package will be saved in /release-builds/lighthouse-script-darwin-x64 folder

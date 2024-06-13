@@ -291,8 +291,8 @@ async function main() {
       log('index.html does not exist, running Lighthouse for the first time.');
 
 
-      //const pastRunsFile = './results/pastRuns.json';
-const pastRunsFile = path.join(__dirname, 'results/pastRuns.json');
+      const pastRunsFile = './results/pastRuns.json';
+      //const pastRunsFile = path.join(__dirname, 'results/pastRuns.json');
 
 
       // Check if urls.txt exists before generating one
