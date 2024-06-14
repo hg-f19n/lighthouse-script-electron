@@ -2,7 +2,8 @@
 results/
 logs/
 node_modules/
-release-builds/ 
+release-builds/
+
 
 # Executables
 node_modules/.bin/chrome-debug
