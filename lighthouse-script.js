@@ -5,16 +5,10 @@ import chromeLauncher from 'chrome-launcher';
 import { writeFile } from './file-utils.mjs';
 import { formatAsCSV, formatAsHTML } from './format-utils.mjs';
 import { readPastRunsFile, writePastRunsFile, generateIndexHTML } from './index-utils.mjs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+//import { broadcast } from './websocket-utils.mjs';
 
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-
-//const inputFile = 'urls.txt';
-const inputFile = path.join(__dirname, 'urls.txt');
-console.log(inputFile);
+const inputFile = 'urls.txt';
 const logDir = 'logs';
 const resultsDir = 'results';
 
